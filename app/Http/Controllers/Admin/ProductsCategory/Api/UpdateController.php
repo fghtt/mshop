@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category\Api;
+namespace App\Http\Controllers\Admin\ProductsCategory\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\UpdateRequest;
@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class UpdateController extends Controller
 {
-    public function __invoke(UpdateRequest $request, ProductsCategory $productsCategory)
+    public function __invoke(UpdateRequest $request, $id)
     {
-        return $productsCategory;
+        $productsCategory = ProductsCategory::find($id);
         $data = $request->validated();
 
         $productsCategory->update($data);

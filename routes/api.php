@@ -22,7 +22,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     #Admin
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         #Category
-        Route::group(['namespace' => 'Category\Api', 'prefix' => 'category'], function () {
+        Route::group(['namespace' => 'ProductsCategory\Api', 'prefix' => 'category'], function () {
             Route::get('/', IndexController::class)->name('admin.category.index');
             Route::patch('/{ProductsCategory}', UpdateController::class)->name('admin.category.update');
         });

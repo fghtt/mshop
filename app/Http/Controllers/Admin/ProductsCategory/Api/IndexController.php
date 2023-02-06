@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Category;
+namespace App\Http\Controllers\Admin\ProductsCategory\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductsCategoriesResource;
 use App\Models\ProductsCategory;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,6 @@ class IndexController extends Controller
     public function __invoke()
     {
         $products_categories = ProductsCategory::all();
-        return view('admin.category.index', compact('products_categories'));
+        return ProductsCategoriesResource::collection($products_categories);
     }
 }

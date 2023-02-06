@@ -24,7 +24,7 @@
                 <a href="{{route('admin.category.create')}}" class="btn btn-primary mb-3">
                     Создать
                 </a>
-                <products_categories></products_categories>
+                <products_category></products_category>
             </div>
         </section>
         <!-- /.content -->
