@@ -35,7 +35,7 @@
                     <input @mouseover="onInput = true" @mouseout="onInput = false" class="form-control" v-model="this.discount">
                 </td>
                 <td>
-                    <a href="#">
+                    <a :href="`products-category/edit/${products_category.id}`">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
                 </td>
@@ -61,7 +61,7 @@ export default {
     },
     methods: {
         getProductsCategories() {
-            axios.get('/api/admin/category')
+            axios.get('/api/admin/products-category')
                 .then(res => {
                     this.products_categories = res.data.data
                 })
@@ -74,7 +74,7 @@ export default {
             this.discount = products_category.discount
         },
         update() {
-            axios.patch(`/api/admin/category/${this.id}`, {
+            axios.patch(`/api/admin/products-category/${this.id}`, {
                 title: this.title,
                 alias: this.alias,
                 discount: this.discount

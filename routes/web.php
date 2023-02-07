@@ -21,10 +21,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', AdminController::class)->name('admin');
 
         #Category
-        Route::group(['namespace' => 'ProductsCategory', 'prefix' => 'category'], function () {
+        Route::group(['namespace' => 'ProductsCategory', 'prefix' => 'products-category'], function () {
             Route::get('/', IndexController::class)->name('admin.category.index');
             Route::get('/create', CreateController::class)->name('admin.category.create');
             Route::post('/', StoreController::class)->name('admin.category.store');
+            Route::get('/edit/{id}', EditController::class)->name('admin.category.edit');
+            Route::patch('/{ProductsCategory}', UpdateController::class)->name('admin.category.update');
         });
     });
 });

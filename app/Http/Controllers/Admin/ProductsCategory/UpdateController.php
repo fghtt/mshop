@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ProductsCategory\Api;
+namespace App\Http\Controllers\Admin\ProductsCategory;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\UpdateRequest;
@@ -19,5 +19,6 @@ class UpdateController extends Controller
         $data = $request->validated();
 
         $productsCategory->update($data);
+        return redirect()->route('admin.category.index');
     }
 }
