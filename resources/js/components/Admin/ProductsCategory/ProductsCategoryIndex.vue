@@ -1,5 +1,5 @@
 <template>
-    <table @click="editableСell !== null && onInput === false? update(): ''" class="table table-striped table-hover">
+    <table class="table table-striped table-hover">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -11,28 +11,28 @@
         </thead>
         <tbody>
         <template v-for="products_category in products_categories">
-            <tr id="{{products_category.id}}">
+            <tr id="{{products_category.id}}" @mouseover="onInput = true" @mouseout="onInput = false">
                 <th scope="row">{{ products_category.id }}</th>
                 <td @dblclick="changeEditableCell(`title${products_category.id}`, products_category)"
                     v-if="editableСell !== `title${products_category.id}`">
                     {{ products_category.title }}
                 </td>
                 <td v-else>
-                    <input @mouseover="onInput = true" @mouseout="onInput = false" type="text" v-model="this.title" class="form-control">
+                    <input type="text" v-model="this.title" class="form-control">
                 </td>
                 <td @dblclick="changeEditableCell(`alias${products_category.id}`, products_category)"
                     v-if="editableСell !== `alias${products_category.id}`">
                     {{ products_category.alias }}
                 </td>
                 <td v-else>
-                    <input @mouseover="onInput = true" @mouseout="onInput = false" class="form-control" v-model="this.alias">
+                    <input class="form-control" v-model="this.alias">
                 </td>
                 <td @dblclick="changeEditableCell(`discount${products_category.id}`, products_category)"
                     v-if="editableСell !== `discount${products_category.id}`">
                     {{ products_category.discount }}
                 </td>
                 <td v-else>
-                    <input @mouseover="onInput = true" @mouseout="onInput = false" class="form-control" v-model="this.discount">
+                    <input class="form-control" v-model="this.discount">
                 </td>
                 <td>
                     <a :href="`products-category/edit/${products_category.id}`">
@@ -72,6 +72,13 @@ export default {
             this.title = products_category.title
             this.alias = products_category.alias
             this.discount = products_category.discount
+            let body = document.querySelector('body')
+
+            body.addEventListener('dblclick',  () =>  {
+                if (this.editableСell !== null && this.onInput === false) {
+                    this.update()
+                }
+            })
         },
         update() {
             axios.patch(`/api/admin/products-category/${this.id}`, {
