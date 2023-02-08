@@ -28,6 +28,11 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/edit/{id}', EditController::class)->name('admin.category.edit');
             Route::patch('/{ProductsCategory}', UpdateController::class)->name('admin.category.update');
         });
+
+        #Products
+        Route::group(['namespace' => 'Products', 'prefix' => 'products'], function () {
+            Route::get('/', IndexController::class)->name('admin.product.index');
+        });
     });
 });
 

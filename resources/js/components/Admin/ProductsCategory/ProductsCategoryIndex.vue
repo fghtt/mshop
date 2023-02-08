@@ -6,7 +6,7 @@
             <th scope="col">Название</th>
             <th scope="col">Алиас</th>
             <th scope="col">Скидка</th>
-            <th scope="col">Действия</th>
+            <th scope="col" colspan="2">Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -37,6 +37,11 @@
                 <td>
                     <a :href="`products-category/edit/${products_category.id}`">
                         <i class="fas fa-pencil-alt"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" @click.prevent="this.delete(products_category.id)">
+                        <i class="text-danger fas fa-trash"></i>
                     </a>
                 </td>
             </tr>
@@ -87,6 +92,13 @@ export default {
                 discount: this.discount
             }).then(res => {
                 this.editableСell = null
+                this.getProductsCategories()
+            })
+        },
+        delete(id) {
+            console.log(id)
+            axios.delete(`/api/admin/products-category/${id}`)
+            .then( res => {
                 this.getProductsCategories()
             })
         }

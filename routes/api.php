@@ -26,6 +26,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['namespace' => 'Api'], function () {
                 Route::get('/', IndexController::class)->name('admin.category.index');
                 Route::patch('/{ProductsCategory}', UpdateController::class)->name('admin.category.api.update');
+                Route::delete('/{ProductsCategory}', DeleteController::class)->name('admin.category.delete');
             });
         });
     });
