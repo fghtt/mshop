@@ -19,7 +19,6 @@ class ProductsCategoriesResource extends JsonResource
             'title' => $this->title,
             'alias' => $this->alias,
             'discount' => $this->discount,
-            'created_at' => $this->created_at
         ];
     }
 }

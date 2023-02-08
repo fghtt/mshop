@@ -18,21 +18,21 @@
                     {{ products_category.title }}
                 </td>
                 <td v-else>
-                    <input type="text" v-model="this.title" class="form-control">
+                    <input type="text" v-model="this.data.title" class="form-control">
                 </td>
                 <td @dblclick="changeEditableCell(`alias${products_category.id}`, products_category)"
                     v-if="editableСell !== `alias${products_category.id}`">
                     {{ products_category.alias }}
                 </td>
                 <td v-else>
-                    <input class="form-control" v-model="this.alias">
+                    <input class="form-control" v-model="this.data.alias">
                 </td>
                 <td @dblclick="changeEditableCell(`discount${products_category.id}`, products_category)"
                     v-if="editableСell !== `discount${products_category.id}`">
                     {{ products_category.discount }}
                 </td>
                 <td v-else>
-                    <input class="form-control" v-model="this.discount">
+                    <input class="form-control" v-model="this.data.discount">
                 </td>
                 <td>
                     <a :href="`products-category/edit/${products_category.id}`">
@@ -51,16 +51,21 @@
 </template>
 
 <script>
+import {setNull} from "../../../functions";
+import {is_equivalence} from "../../../functions";
 export default {
     name: "CategoryIndex",
     data() {
         return {
             products_categories: null,
+            products_category: null,
             editableСell: null,
-            id: null,
-            title: null,
-            alias: null,
-            discount: null,
+            data: {
+                id: null,
+                title: null,
+                alias: null,
+                discount: null,
+            },
             onInput: false
         }
     },
@@ -72,31 +77,35 @@ export default {
                 })
         },
         changeEditableCell(id, products_category) {
+            this.products_category = products_category
             this.editableСell = id
-            this.id = products_category.id
-            this.title = products_category.title
-            this.alias = products_category.alias
-            this.discount = products_category.discount
+            this.data.id = products_category.id
+            this.data.title = products_category.title
+            this.data.alias = products_category.alias
+            this.data.discount = products_category.discount
             let body = document.querySelector('body')
 
             body.addEventListener('dblclick',  () =>  {
-                if (this.editableСell !== null && this.onInput === false) {
+                if (this.editableСell !== null
+                    && this.onInput === false
+                    && !is_equivalence(this.data, this.products_category)) {
                     this.update()
                 }
             })
         },
         update() {
-            axios.patch(`/api/admin/products-category/${this.id}`, {
-                title: this.title,
-                alias: this.alias,
-                discount: this.discount
+            axios.patch(`/api/admin/products-category/${this.data.id}`, {
+                title: this.data.title,
+                alias: this.data.alias,
+                discount: this.data.discount
             }).then(res => {
                 this.editableСell = null
+                this.data = setNull(this.data)
+                this.products_category = null
                 this.getProductsCategories()
             })
         },
         delete(id) {
-            console.log(id)
             axios.delete(`/api/admin/products-category/${id}`)
             .then( res => {
                 this.getProductsCategories()
