@@ -17,7 +17,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::get('/', MainController::class)->name('main');
 
     #Admin
-    Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' =>['auth', 'admin']], function () {
         Route::get('/', AdminController::class)->name('admin');
 
         #Category
