@@ -47,6 +47,7 @@
                             @enderror
                         <input class="form-control" name="discount" type="number">
                     </div>
+
                     <div class="form-group mt-4">
                         <input class="btn btn-primary" type="submit" value="Добавить">
                     </div>

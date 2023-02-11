@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 use Illuminate\Support\Facades\Storage;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     /**
      * @return \Illuminate\Contracts\View\View
@@ -17,8 +17,7 @@ class StoreController extends Controller
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $data['preview'] = Storage::disk('public')->put('/images', $data['preview']);
-        Product::create($data);
+        $this->service->store($data);
         return redirect()->route('admin.product.index');
     }
 }

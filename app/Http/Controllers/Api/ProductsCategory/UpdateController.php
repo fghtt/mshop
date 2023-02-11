@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\ProductsCategory;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Http\Requests\Admin\ProductsCategory\UpdateRequest;
 use App\Models\ProductsCategory;
 
 class UpdateController extends Controller

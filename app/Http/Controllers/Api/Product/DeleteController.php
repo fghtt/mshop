@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Product;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductsCategory;
+use App\Models\Product;
 
 class DeleteController extends Controller
 {
@@ -12,8 +12,8 @@ class DeleteController extends Controller
      */
     public function __invoke($id)
     {
-        $productsCategory = ProductsCategory::find($id);
-        $productsCategory->delete();
+        $product = Product::find($id);
+        $product->delete();
         return [];
     }
 }

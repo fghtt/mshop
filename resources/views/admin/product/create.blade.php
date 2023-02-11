@@ -47,6 +47,18 @@
                             @enderror
                             <input class="form-control" name="price" type="number">
                     </div>
+                    <div class="form-group col-3">
+                        @error('category_id')
+                        <label class="text-danger">{{$message}}</label>
+                        @else
+                            <label>Категория</label>
+                            @enderror
+                            <select class="form-control" name="category_id">
+                                @foreach($productsCategories as $productsCategory)
+                                    <option value="{{$productsCategory->id}}">{{$productsCategory->title}}</option>
+                                @endforeach
+                            </select>
+                    </div>
                     <div class="form-group col-6">
                         @error('description')
                         <label class="text-danger">{{$message}}</label>

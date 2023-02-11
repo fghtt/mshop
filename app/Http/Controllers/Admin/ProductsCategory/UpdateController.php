@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\ProductsCategory;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Http\Requests\Admin\ProductsCategory\UpdateRequest;
 use App\Models\ProductsCategory;
 use Illuminate\Http\Request;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     /**
      * @param UpdateRequest $request
@@ -15,10 +15,8 @@ class UpdateController extends Controller
      */
     public function __invoke(UpdateRequest $request, $id)
     {
-        $productsCategory = ProductsCategory::find($id);
         $data = $request->validated();
-
-        $productsCategory->update($data);
+        $this->service->update($id, $request);
         return redirect()->route('admin.products_category.index');
     }
 }

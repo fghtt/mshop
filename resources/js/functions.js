@@ -9,7 +9,6 @@ export function setNull(obj) {
 
 export function is_equivalence(obj1, obj2) {
     for (let key in obj2) {
-        console.log(obj1[key], obj2[key])
         if( obj1[key] !== obj2[key]) {
             return false
         }

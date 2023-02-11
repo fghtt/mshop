@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Product;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
-use App\Models\ProductsCategory;
+use App\Http\Requests\Admin\Product\UpdateRequest;
+use App\Models\Product;
 
 class UpdateController extends Controller
 {
@@ -14,9 +14,9 @@ class UpdateController extends Controller
      */
     public function __invoke(UpdateRequest $request, $id)
     {
-        $productsCategory = ProductsCategory::find($id);
+        $product = Product::find($id);
         $data = $request->validated();
 
-        $productsCategory->update($data);
+        $product->update($data);
     }
 }

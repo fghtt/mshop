@@ -4,8 +4,9 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Название</th>
-            <th scope="col">Алиас</th>
+            <th scope="col">Цена</th>
             <th scope="col">Скидка</th>
+            <th scope="col">Категория</th>
             <th scope="col" colspan="2">Действия</th>
         </tr>
         </thead>
@@ -33,6 +34,9 @@
                 </td>
                 <td v-else>
                     <input class="form-control" v-model="this.data.discount">
+                </td>
+                <td>
+                    {{ product.category }}
                 </td>
                 <td>
                     <a :href="`products/edit/${product.id}`">
@@ -65,12 +69,14 @@ export default {
                 title: null,
                 price: null,
                 discount: null,
+                description: null,
+                category_id: null
             },
             onInput: false
         }
     },
     methods: {
-        getProductsCategories() {
+        getProduct() {
             axios.get('/api/products')
                 .then(res => {
                     this.products = res.data.data
@@ -83,8 +89,10 @@ export default {
             this.data.title = product.title
             this.data.price = product.price
             this.data.discount = product.discount
-            let body = document.querySelector('body')
+            this.data.description = product.description
+            this.data.category_id = product.category_id
 
+            let body = document.querySelector('body')
             body.addEventListener('dblclick',  () =>  {
                 if (this.editableСell !== null
                     && this.onInput === false
@@ -97,23 +105,25 @@ export default {
             axios.patch(`/api/products/${this.data.id}`, {
                 title: this.data.title,
                 price: this.data.price,
-                discount: this.data.discount
+                discount: this.data.discount,
+                description: this.data.description,
+                category_id: this.data.category_id
             }).then(res => {
                 this.editableСell = null
                 this.data = setNull(this.data)
                 this.product = null
-                this.getProductsCategories()
+                this.getProduct()
             })
         },
         delete(id) {
-            axios.delete(`/api/products-category/${id}`)
+            axios.delete(`/api/products/${id}`)
                 .then( res => {
-                    this.getProductsCategories()
+                    this.getProduct()
                 })
         }
     },
     mounted() {
-        this.getProductsCategories()
+        this.getProduct()
     }
 }
 </script>

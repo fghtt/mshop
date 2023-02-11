@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Product\UpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     /**
      * @param UpdateRequest $request
@@ -16,10 +17,8 @@ class UpdateController extends Controller
      */
     public function __invoke(UpdateRequest $request, $id)
     {
-        $product = Product::find($id);
         $data = $request->validated();
-        $data['preview'] = Storage::disk('public')->put('/images', $data['preview']);
-        $product->update($data);
+        $this->service->update($id, $data);
         return redirect()->route('admin.product.index');
     }
 }
