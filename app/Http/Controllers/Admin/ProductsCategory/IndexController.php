@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application
+     */
     public function __invoke()
     {
-        $products_categories = ProductsCategory::all();
-        return view('admin.category.index', compact('products_categories'));
+        return view('admin.products_category.index');
     }
 }

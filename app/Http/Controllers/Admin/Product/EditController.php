@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ProductsCategory;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductsCategory;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class EditController extends Controller
@@ -14,7 +14,7 @@ class EditController extends Controller
      */
     public function __invoke(int $id)
     {
-       $productsCategory = ProductsCategory::find($id);
-       return view('admin.products_category.edit', compact('productsCategory'));
+       $product = Product::find($id);
+       return view('admin.product.edit', compact('product'));
     }
 }

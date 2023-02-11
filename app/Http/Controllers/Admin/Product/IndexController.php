@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Products;
+namespace App\Http\Controllers\Admin\Product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -8,9 +8,11 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
     public function __invoke()
     {
-        $products = Product::all();
-        return view('admin.product.index', compact('products'));
+        return view('admin.product.index');
     }
 }

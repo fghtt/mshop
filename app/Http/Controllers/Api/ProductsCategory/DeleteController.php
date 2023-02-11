@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ProductsCategory\Api;
+namespace App\Http\Controllers\Api\ProductsCategory;
 
 use App\Http\Controllers\Controller;
 use App\Models\ProductsCategory;
-use Illuminate\Http\Request;
 
 class DeleteController extends Controller
 {

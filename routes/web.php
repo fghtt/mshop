@@ -20,18 +20,29 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' =>['auth', 'admin']], function () {
         Route::get('/', AdminController::class)->name('admin');
 
-        #Category
+        #ProductsCategory
         Route::group(['namespace' => 'ProductsCategory', 'prefix' => 'products-category'], function () {
-            Route::get('/', IndexController::class)->name('admin.category.index');
-            Route::get('/create', CreateController::class)->name('admin.category.create');
-            Route::post('/', StoreController::class)->name('admin.category.store');
-            Route::get('/edit/{id}', EditController::class)->name('admin.category.edit');
-            Route::patch('/{ProductsCategory}', UpdateController::class)->name('admin.category.update');
+            Route::get('/', IndexController::class)->name('admin.products_category.index');
+            Route::get('/create', CreateController::class)->name('admin.products_category.create');
+            Route::post('/', StoreController::class)->name('admin.products_category.store');
+            Route::get('/edit/{id}', EditController::class)->name('admin.products_category.edit');
+            Route::patch('/{id}', UpdateController::class)->name('admin.products_category.update');
         });
 
         #Products
-        Route::group(['namespace' => 'Products', 'prefix' => 'products'], function () {
+        Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
             Route::get('/', IndexController::class)->name('admin.product.index');
+            Route::get('/create', CreateController::class)->name('admin.product.create');
+            Route::post('/', StoreController::class)->name('admin.product.store');
+            Route::get('/edit/{id}', EditController::class)->name('admin.product.edit');
+            Route::patch('/{id}', UpdateController::class)->name('admin.product.update');
+        });
+
+        #User
+        Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+            Route::get('/', IndexController::class)->name('admin.user.index');
+            Route::get('/create', CreateController::class)->name('admin.user.create');
+            Route::post('/', StoreController::class)->name('admin.user.store');
         });
     });
 });

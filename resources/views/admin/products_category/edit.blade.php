@@ -10,7 +10,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Категории</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.products_category.index')}}">Категории</a></li>
                             <li class="breadcrumb-item active">Создать</li>
                         </ol>
                     </div><!-- /.col -->
@@ -21,7 +21,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid pt-2 pl-4">
-                <form action="{{route('admin.category.update', $productsCategory->id)}}" method="post" class="w-25">
+                <form action="{{route('admin.products_category.update', $productsCategory->id)}}" method="post" class="w-25">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">

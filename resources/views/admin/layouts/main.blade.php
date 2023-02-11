@@ -142,6 +142,7 @@
 <!-- ./wrapper -->
 
 @vite(['resources/js/app.js'])
+</script>
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -164,5 +165,22 @@
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- Custom File Input-->
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+            ]
+        });
+    });
+</script>
 </body>
 </html>

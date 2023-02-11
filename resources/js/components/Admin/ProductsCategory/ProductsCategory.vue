@@ -54,7 +54,7 @@
 import {setNull} from "../../../functions";
 import {is_equivalence} from "../../../functions";
 export default {
-    name: "CategoryIndex",
+    name: "ProductsCategory",
     data() {
         return {
             products_categories: null,
@@ -71,7 +71,7 @@ export default {
     },
     methods: {
         getProductsCategories() {
-            axios.get('/api/admin/products-category')
+            axios.get('/api/products-category')
                 .then(res => {
                     this.products_categories = res.data.data
                 })
@@ -94,7 +94,7 @@ export default {
             })
         },
         update() {
-            axios.patch(`/api/admin/products-category/${this.data.id}`, {
+            axios.patch(`/api/products-category/${this.data.id}`, {
                 title: this.data.title,
                 alias: this.data.alias,
                 discount: this.data.discount
@@ -106,7 +106,7 @@ export default {
             })
         },
         delete(id) {
-            axios.delete(`/api/admin/products-category/${id}`)
+            axios.delete(`/api/products-category/${id}`)
             .then( res => {
                 this.getProductsCategories()
             })

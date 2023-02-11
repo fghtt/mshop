@@ -9,10 +9,14 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
+    /**
+     * @param StoreRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
         ProductsCategory::create($data);
-        return redirect()->route('admin.category.index');
+        return redirect()->route('admin.products_category.index');
     }
 }

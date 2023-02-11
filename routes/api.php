@@ -18,16 +18,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    #Admin
-    Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
-        #Category
-        Route::group(['namespace' => 'ProductsCategory', 'prefix' => 'products-category'], function () {
-            Route::group(['namespace' => 'Api'], function () {
-                Route::get('/', IndexController::class)->name('admin.category.index');
-                Route::patch('/{ProductsCategory}', UpdateController::class)->name('admin.category.api.update');
-                Route::delete('/{ProductsCategory}', DeleteController::class)->name('admin.category.delete');
-            });
-        });
+Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
+    #ProductsCategory
+    Route::group(['namespace' => 'ProductsCategory', 'prefix' => 'products-category'], function () {
+        Route::get('/', IndexController::class);
+        Route::patch('/{ProductsCategory}', UpdateController::class)
+            ->name('admin.products_category.api.update');
+        Route::delete('/{ProductsCategory}', DeleteController::class)
+            ->name('admin.products_category.delete');
     });
+
+    #Products
+    Route::group(['namespace' => 'Product', 'prefix' => 'products'], function () {
+        Route::get('/', IndexController::class)->name('api.product.index');
+        Route::patch('/{Product}', UpdateController::class)->name('api.product.update');
+        Route::delete('/{Product}', DeleteController::class)->name('api.product.delete');
+    });
+
+    #User
+    Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
+        Route::get('/', IndexController::class);
+    });
+
 });

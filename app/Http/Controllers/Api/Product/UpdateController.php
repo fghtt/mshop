@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\ProductsCategory\Api;
+namespace App\Http\Controllers\Api\Product;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\UpdateRequest;
 use App\Models\ProductsCategory;
-use Illuminate\Http\Request;
 
 class UpdateController extends Controller
 {
