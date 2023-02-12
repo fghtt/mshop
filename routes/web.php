@@ -38,6 +38,15 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::patch('/{id}', UpdateController::class)->name('admin.product.update');
         });
 
+        #Orders
+        Route::group(['namespace' => 'Order', 'prefix' => 'orders'], function () {
+            Route::get('/', IndexController::class)->name('admin.order.index');
+            Route::get('/create', CreateController::class)->name('admin.order.create');
+            Route::post('/', StoreController::class)->name('admin.order.store');
+            Route::get('/edit/{id}', EditController::class)->name('admin.order.edit');
+            Route::patch('/{id}', UpdateController::class)->name('admin.order.update');
+        });
+
         #User
         Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
             Route::get('/', IndexController::class)->name('admin.user.index');

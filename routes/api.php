@@ -33,6 +33,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
         Route::get('/', IndexController::class)->name('api.product.index');
         Route::patch('/{Product}', UpdateController::class)->name('api.product.update');
         Route::delete('/{Product}', DeleteController::class)->name('api.product.delete');
+        Route::post('/search', SearchController::class)->name('api.product.search');
     });
 
     #User
