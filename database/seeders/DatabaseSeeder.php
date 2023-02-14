@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\ProductsCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,11 +17,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        ProductsCategory::factory(20)->create();
+        $products = Product::factory(1000)->create();
+        $orders = Order::factory(1000)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach($orders as $order) {
+            $productsId = $products->random()->pluck('id');
+            $order->products()->attach($products);
+        }
     }
 }
