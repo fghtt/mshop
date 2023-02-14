@@ -24,7 +24,7 @@ class OrderFactory extends Factory
         $longitude = ;*/
 
         return [
-            'date' => $this->faker->date('Y_m_d),
+            'date' => $this->faker->date('Y_m_d'),
             'phone' => $this->faker->phoneNumber(),
             'email' => $this->faker->email(),
             'sum' => random_int(200, 15000),
