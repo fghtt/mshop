@@ -7,7 +7,6 @@ export function start() {
 }
 
 function init() {
-    let geolocation = ymaps.geolocation
     if(typeof coords !== "undefined") {
         myMap = new ymaps.Map('map', {
             center: coords,
@@ -16,6 +15,7 @@ function init() {
             searchControlProvider: 'yandex#search'
         })
     } else {
+        let geolocation = ymaps.geolocation
         myMap = new ymaps.Map('map', {
             center: [55,44],
             zoom: 10

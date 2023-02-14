@@ -42,14 +42,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Бренды товаров
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item">
                     <a href="/admin/products" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
