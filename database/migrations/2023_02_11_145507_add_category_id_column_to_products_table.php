@@ -18,8 +18,8 @@ return new class extends Migration
             $table->index('category_id', 'products_category_id');
 
             $table->foreign('category_id', 'products_category_fk')
-                ->references('products_categories')
-                ->on('id');
+                ->references('id')
+                ->on('products_categories');
         });
     }
 
