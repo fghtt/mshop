@@ -144,9 +144,8 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 @vite(['resources/js/app.js'])
-</script>
+
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -171,6 +170,7 @@
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- Custom File Input-->
 <script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+
 <script src="https://api-maps.yandex.ru/2.1/?apikey=94bfb5bc-3544-405c-b3f0-8df146626b7f&lang=ru_RU"
         type="text/javascript">
 </script>

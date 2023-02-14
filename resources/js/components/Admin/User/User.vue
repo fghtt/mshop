@@ -78,7 +78,7 @@ export default {
         }
     },
     methods: {
-        getProductsCategories() {
+        getUsers() {
             axios.get('/api/users')
                 .then(res => {
                     this.users = res.data.data
@@ -110,18 +110,18 @@ export default {
                 this.editableСell = null
                 this.data = setNull(this.data)
                 this.user = null
-                this.getProductsCategories()
+                this.getUsers()
             })
         },
         delete(id) {
             axios.delete(`/api/products-category/${id}`)
                 .then(res => {
-                    this.getProductsCategories()
+                    this.getUsers()
                 })
         }
     },
     mounted() {
-        this.getProductsCategories()
+        this.getUsers()
     }
 }
 </script>

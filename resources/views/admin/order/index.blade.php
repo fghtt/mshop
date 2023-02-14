@@ -24,7 +24,7 @@
                 <a href="{{route('admin.order.create')}}" class="btn btn-primary mb-3">
                     Создать
                 </a>
-                <products></products>
+                <orders></orders>
             </div>
         </section>
         <!-- /.content -->

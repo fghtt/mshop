@@ -15,8 +15,12 @@
 
 <script>
 import {setAddress} from "../../../main";
+import {start} from "../../../main";
+import {setPoint} from "../../../main";
+
 export default {
     name: "OrderMap",
+    props: ['point'],
     data() {
         return {
             left: true,
@@ -35,7 +39,10 @@ export default {
         }
     },
     mounted() {
-
+        if(this.point) {
+            setPoint(this.point)
+        }
+        start()
     }
 }
 </script>

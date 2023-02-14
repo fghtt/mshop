@@ -43,7 +43,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::get('/', IndexController::class)->name('admin.order.index');
             Route::get('/create', CreateController::class)->name('admin.order.create');
             Route::post('/', StoreController::class)->name('admin.order.store');
-            Route::get('/edit/{id}', EditController::class)->name('admin.order.edit');
+            Route::get('/show/{id}', ShowController::class)->name('admin.order.show');
             Route::patch('/{id}', UpdateController::class)->name('admin.order.update');
         });
 

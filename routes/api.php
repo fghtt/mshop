@@ -36,6 +36,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
         Route::post('/search', SearchController::class)->name('api.product.search');
     });
 
+    #Orders
+    Route::group(['namespace' => 'Order', 'prefix' => 'orders'], function () {
+        Route::get('/', IndexController::class)->name('api.order.index');
+        Route::patch('/{Order}', UpdateController::class)->name('api.order.update');
+        Route::post('/{Order}', StoreController::class)->name('api.order.store');
+        Route::delete('/{Order}', DeleteController::class)->name('api.order.delete');
+    });
+
     #User
     Route::group(['namespace' => 'User', 'prefix' => 'users'], function () {
         Route::get('/', IndexController::class);

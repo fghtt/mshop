@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin\Order;
 
 use App\Models\Order;
 
-class EditController extends BaseController
+class ShowController extends BaseController
 {
     /**
      * @param int $id
@@ -12,7 +12,7 @@ class EditController extends BaseController
      */
     public function __invoke(int $id)
     {
-       $orders = Order::find($id);
-       return view('admin.order.edit', compact('orders'));
+       $order = Order::find($id);
+       return view('admin.order.show', compact('order'));
     }
 }
