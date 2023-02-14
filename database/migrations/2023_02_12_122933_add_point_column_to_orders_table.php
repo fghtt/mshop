@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->addColumn('string', 'point')->nullable();
+            $table->string('point')->nullable();
         });
     }
 
